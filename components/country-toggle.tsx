@@ -65,7 +65,7 @@ export function CountryToggle() {
               height={18}
               className="rounded-sm"
             />
-            <span>{country.label}</span>
+            <span className="text-black">{country.label}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

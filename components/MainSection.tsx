@@ -105,7 +105,7 @@ export default function MainSection() {
          </div>
          {/* Audio*/}
          <div>
-            <button
+            <Button
               className="text-muted-foreground hover:text-foreground hover:cursor-pointer pointer-events-auto"
               type="button"
               onClick={() => {
@@ -113,8 +113,8 @@ export default function MainSection() {
 
               }}
             >
-                <Volume2Icon className="h-5 w-5" />
-            </button>
+                <Volume2Icon className="h-5 w-5 text-white" />
+            </Button>
             {null}
          </div>
        

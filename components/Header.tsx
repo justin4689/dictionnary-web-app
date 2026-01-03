@@ -7,7 +7,7 @@ export default function Header() {
     <header>
        
        <div className='max-w-5xl  w-full mx-auto px-6 py-4 flex justify-between items-center'>
-         <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-200">WordBase</h1>
+         <h1 className="md:text-4xl text-3xl font-bold text-gray-800 dark:text-gray-200">WordBase</h1>
 
          <div className='flex gap-3 items-center'>
          <ModeToggle />
