@@ -3,6 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { type LangCode, useLanguage } from "@/app/providers"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +25,8 @@ const countries: Country[] = [
 ]
 
 export function CountryToggle() {
-  const [current, setCurrent] = React.useState(countries[1])
+  const [current, setCurrent] = React.useState(countries[0])
+  const { setLang } = useLanguage()
 
   return (
     <DropdownMenu>
@@ -50,7 +52,10 @@ export function CountryToggle() {
         {countries.map((country) => (
           <DropdownMenuItem
             key={country.code}
-            onClick={() => setCurrent(country)}
+            onClick={() => {
+              setCurrent(country)
+              setLang(country.code as LangCode)
+            }}
             className="flex items-center gap-2"
           >
             <Image

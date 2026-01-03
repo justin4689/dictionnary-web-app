@@ -3,6 +3,7 @@ import { Montserrat} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
+import Providers from "./providers";
 
 const montserrat= Montserrat({
   subsets: ["latin"],
@@ -25,14 +26,16 @@ export default function RootLayout({
       <body
         className={`${montserrat.className} antialiased  `}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange>
-        <Header/>
-        <main className="container">{children}</main>
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
+            <Header/>
+            <main className="container">{children}</main>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
