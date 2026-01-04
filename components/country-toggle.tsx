@@ -22,6 +22,7 @@ const countries: Country[] = [
   { code: "en", label: "English", flag: "/flags/US.svg" },
   { code: "es", label: "Español", flag: "/flags/ES.svg" },
   { code: "de", label: "Deutsch", flag: "/flags/DE.svg" },
+   { code: "it", label: "Italiano", flag: "/flags/IT.svg" },
 ]
 
 export function CountryToggle() {

@@ -14,7 +14,14 @@ export default function MainSection() {
   const [submittedWord, setSubmittedWord] = React.useState<string | null>(null);
   const { lang } = useLanguage();
 
-  const wordQuery = useQuery<WiktionaryApiResponse>({
+  const {
+    data: wordData,
+    error: wordError,
+    isError: isWordError,
+    isFetching: isWordFetching,
+    isLoading: isWordLoading,
+    isSuccess: isWordSuccess,
+  } = useQuery<WiktionaryApiResponse>({
     queryKey: ["wiktionary", lang, submittedWord],
     queryFn: async () => {
       if (!submittedWord) {
@@ -23,14 +30,16 @@ export default function MainSection() {
       return getWord(submittedWord, lang);
     },
     enabled: Boolean(submittedWord),
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 
   const page = React.useMemo(() => {
-    const pages = wordQuery.data?.query?.pages;
+    const pages = wordData?.query?.pages;
     if (!pages) return null;
     const firstKey = Object.keys(pages)[0];
     return firstKey ? pages[firstKey] : null;
-  }, [wordQuery.data]);
+  }, [wordData]);
 
   const isMissing = React.useMemo(() => {
     if (!page) return false;
@@ -81,17 +90,23 @@ export default function MainSection() {
 
       </div>
       {/* Loading */}
-      {wordQuery.isFetching ? (
+      {isWordLoading ? (
         <div className="mt-4  min-h-[200px] flex items-center justify-center gap-2">
           <Spinner />
           <span className="text-sm text-muted-foreground">Loading</span>
         </div>
       ) : null}
+      {isWordFetching && wordData ? (
+        <div className="mt-4 flex items-center gap-2">
+          <Spinner className="size-3" />
+          <span className="text-xs text-muted-foreground">Updating…</span>
+        </div>
+      ) : null}
       {/* Error */}
-      {wordQuery.isError ? <div>{(wordQuery.error as Error).message}</div> : null}
+      {isWordError ? <div>{(wordError as Error).message}</div> : null}
 
       {/*No Results*/}
-      {submittedWord && wordQuery.isSuccess && (!page || isMissing) ? (
+      {submittedWord && isWordSuccess && (!page || isMissing) ? (
         <div>No results.</div>
       ) : null}
       {/* Results */}

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
 import Providers from "./providers";
+import Footer from "@/components/Footer";
 
 const montserrat= Montserrat({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${montserrat.className} antialiased  `}
+        className={`${montserrat.className} antialiased min-h-screen flex flex-col`}
       >
         <Providers>
           <ThemeProvider
@@ -33,7 +34,8 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange>
             <Header/>
-            <main className="container">{children}</main>
+            <main className="container flex-1">{children}</main>
+            <Footer/>
           </ThemeProvider>
         </Providers>
       </body>

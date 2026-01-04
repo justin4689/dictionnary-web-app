@@ -1,14 +1,17 @@
 import React from 'react'
 import { ModeToggle } from './mode-toggle'
 import { CountryToggle } from './country-toggle'
+import Link from 'next/link'
 
 export default function Header() {
   return (
     <header>
        
        <div className='max-w-5xl  w-full mx-auto px-6 py-4 flex justify-between items-center'>
-         <h1 className="md:text-4xl text-3xl font-bold text-gray-800 dark:text-gray-200">WordBase</h1>
 
+        <Link href="/">
+         <h1 className="md:text-4xl text-3xl font-bold text-gray-800 dark:text-gray-200">WordBase</h1>
+</Link>
          <div className='flex gap-3 items-center'>
          <ModeToggle />
          <CountryToggle />

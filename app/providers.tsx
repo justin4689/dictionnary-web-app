@@ -3,7 +3,7 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-export type LangCode = "fr" | "en" | "es" | "de";
+export type LangCode = "fr" | "en" | "es" | "de" | "it";
 
 const LanguageContext = React.createContext<{
   lang: LangCode;
@@ -13,7 +13,7 @@ const LanguageContext = React.createContext<{
 const queryClient = new QueryClient();
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = React.useState<LangCode>("en");
+  const [lang, setLang] = React.useState<LangCode>("fr");
 
   return (
     <QueryClientProvider client={queryClient}>

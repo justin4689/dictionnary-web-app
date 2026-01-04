@@ -5,6 +5,7 @@ export const langMap = {
   en: "en.wiktionary.org",
   es: "es.wiktionary.org",
   de: "de.wiktionary.org",
+  it: "it.wiktionary.org",
 } as const;
 
 export type LangCode = keyof typeof langMap;
@@ -44,6 +45,7 @@ const speechLocaleByLang: Record<LangCode, string> = {
   en: "en-US",
   es: "es-ES",
   de: "de-DE",
+  it: "it-IT",
 };
 
 function toSpeechLocale(lang: string): string {
