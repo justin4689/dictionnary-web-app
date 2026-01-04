@@ -12,7 +12,7 @@ import { getWord, speak, type WiktionaryApiResponse } from "@/lib/api";
 export default function MainSection() {
   const [queryWord, setQueryWord] = React.useState("");
   const [submittedWord, setSubmittedWord] = React.useState<string | null>(null);
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
 
   const {
     data: wordData,
@@ -66,7 +66,7 @@ export default function MainSection() {
 >
   <Input
     type="text"
-    placeholder="Search for a word..."
+    placeholder={t("search_placeholder")}
     value={queryWord}
     onChange={(e) => {
       const next = e.target.value;
@@ -90,7 +90,7 @@ export default function MainSection() {
     className="text-muted-foreground hover:text-foreground"
   >
     <SearchIcon className="h-5 w-5" />
-    <span className="sr-only">Search</span>
+    <span className="sr-only">{t("search_aria")}</span>
   </Button>
 </form>
 
@@ -99,13 +99,13 @@ export default function MainSection() {
       {isWordLoading ? (
         <div className="mt-4  min-h-[200px] flex items-center justify-center gap-2">
           <Spinner />
-          <span className="text-sm text-muted-foreground">Loading</span>
+          <span className="text-sm text-muted-foreground">{t("loading")}</span>
         </div>
       ) : null}
       {isWordFetching && wordData ? (
         <div className="mt-4 flex items-center gap-2">
           <Spinner className="size-3" />
-          <span className="text-xs text-muted-foreground">Updating…</span>
+          <span className="text-xs text-muted-foreground">{t("updating")}</span>
         </div>
       ) : null}
       {/* Error */}
@@ -113,7 +113,7 @@ export default function MainSection() {
 
       {/*No Results*/}
       {submittedWord && isWordSuccess && (!page || isMissing) ? (
-        <div className=" h-[300px] flex items-center justify-center">No results.</div>
+        <div className=" h-[300px] flex items-center justify-center">{t("no_results")}</div>
       ) : null}
       {/* Results */}
       {page && !isMissing ? (
