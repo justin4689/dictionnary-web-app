@@ -2,6 +2,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+
+To access the images, you can use the following path:
+
+
+![Home](./public/home.png)
+
 First, run the development server:
 
 ```bash
