@@ -3,7 +3,8 @@
 import * as React from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { type LangCode, useLanguage } from "@/app/providers"
+import { useLanguage } from "@/app/providers"
+import type { LangCode } from "@/lib/lang"
 import {
   DropdownMenu,
   DropdownMenuContent,

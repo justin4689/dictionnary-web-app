@@ -1,13 +1,5 @@
 import { NextResponse } from "next/server";
-
-const langMap = {
-  fr: "fr.wiktionary.org",
-  en: "en.wiktionary.org",
-  es: "es.wiktionary.org",
-  de: "de.wiktionary.org",
-} as const;
-
-type LangCode = keyof typeof langMap;
+import { langMap, type LangCode } from "@/lib/lang";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
