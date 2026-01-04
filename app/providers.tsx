@@ -3,6 +3,7 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+
 export type LangCode = "fr" | "en" | "es" | "de" | "it";
 
 const LanguageContext = React.createContext<{

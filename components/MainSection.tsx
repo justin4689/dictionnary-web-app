@@ -68,7 +68,13 @@ export default function MainSection() {
     type="text"
     placeholder="Search for a word..."
     value={queryWord}
-    onChange={(e) => setQueryWord(e.target.value)}
+    onChange={(e) => {
+      const next = e.target.value;
+      setQueryWord(next);
+      if (next.trim() === "") {
+        setSubmittedWord(null);
+      }
+    }}
     className="
       flex-1 border-0 bg-transparent
       focus-visible:ring-0
@@ -107,7 +113,7 @@ export default function MainSection() {
 
       {/*No Results*/}
       {submittedWord && isWordSuccess && (!page || isMissing) ? (
-        <div>No results.</div>
+        <div className=" h-[300px] flex items-center justify-center">No results.</div>
       ) : null}
       {/* Results */}
       {page && !isMissing ? (
